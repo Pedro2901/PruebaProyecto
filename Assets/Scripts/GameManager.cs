@@ -20,16 +20,18 @@ public class GameManager : Manager<GameManager>
     int unitsPerTeam=2;
     void Start()
     {
+        Debug.Log("Empezamos");
         InstantiateUnits();
     }
 
     private void InstantiateUnits(){
-
+ 
         entitiesByTeam.Add(Team.team1,new List<BaseEntity>());
         entitiesByTeam.Add(Team.team2,new List<BaseEntity>());
+        Debug.Log("Instanciamos");
         for(int i =0; i<unitsPerTeam;i++){
             //Crear unidades para team1
-            int randomIndex=UnityEngine.Random.Range(0,allentitiesprefab.Count-1);
+            int randomIndex=UnityEngine.Random.Range(0,allentitiesprefab.Count);
             BaseEntity newEntity= Instantiate(allentitiesprefab[randomIndex]);
             entitiesByTeam[Team.team1].Add(newEntity);
 
@@ -40,11 +42,12 @@ public class GameManager : Manager<GameManager>
 
             
             //Crear unidades para team2
-            //int randomIndex2=UnityEngine.Random.Range(0,allentitiesprefab.Count-1);
-            //newEntity= Instantiate(allentitiesprefab[randomIndex]);
-            //entitiesByTeam[Team.team1].Add(newEntity);
+            int randomIndex2=UnityEngine.Random.Range(0,allentitiesprefab.Count);
+            newEntity= Instantiate(allentitiesprefab[randomIndex]);
+            entitiesByTeam[Team.team2].Add(newEntity);
             
-            //newEntity.Setup(Team.team1,GridManager.Instance.GetfreeNode(Team.team1));
+            newEntity.Setup(Team.team2,GridManager.Instance.GetfreeNode(Team.team2));
+            Debug.Log("Created unit for team2");
 
         }
     }

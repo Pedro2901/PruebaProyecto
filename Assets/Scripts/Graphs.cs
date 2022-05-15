@@ -5,31 +5,31 @@ using UnityEngine;
 
 public class Graph
 {
-  public List<Node>nodes;
-  public List<Edge>edges;
+public List<Node>nodes;
+public List<Edge>edges;
 
     public Graph()
     {
         nodes=new List<Node>();
         edges=new List<Edge>();
     }
-   public bool Adjacent(Node from, Node to)
+public bool Adjacent(Node from, Node to)
     {
         foreach(Edge e in edges)
         {
             if (e.from == from && e.to == to)
                 return true;
         }
-        return false;
+        return false;  
     }
 
-    public List<Node> Neighbors(Node from)
+    public List<Node> Neighbors(Node of)
     {
         List<Node> result = new List<Node>();
 
         foreach (Edge e in edges)
         {
-            if (e.from == from)
+            if (e.from == of)
                 result.Add(e.to);
         }
         return result;
