@@ -43,12 +43,15 @@ public class BaseEntity : MonoBehaviour
 
 
     protected void FindTarget(){
+        Debug.Log("finding target");
         var allenemies=GameManager.Instance.GetBaseEntitiesAgainst(myTeam);
 
         float minDistance=Mathf.Infinity;
         BaseEntity candidateTarget=null;
         foreach(BaseEntity e in allenemies){
             if(Vector3.Distance(e.transform.position,this.transform.position)<minDistance){
+                Debug.Log("found new target");
+                Debug.Log("Distance to "+e.name+" is "+Vector3.Distance(e.transform.position,this.transform.position));
                 minDistance=Vector3.Distance(e.transform.position, this.transform.position );
                 candidateTarget=e;
             }
@@ -124,8 +127,11 @@ IEnumerator WaitAttackCoroutine(float waittime){
 
 public void TakeDamage(int Amount){
     baseHealth-=Amount;
+    Debug.Log("Health is "+baseHealth);
     healthBar.UptadeBar(baseHealth);
+    
     if(baseHealth<=0){
+       
     dead=true;
     CurrentNode.SetOccupied(false);
     GameManager.Instance.UnitDead(this);

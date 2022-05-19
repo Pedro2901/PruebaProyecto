@@ -665,8 +665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1795999359}
-  fronIndex: 5
-  toIndex: 20
+  fronIndex: 1
+  toIndex: 50
 --- !u!1 &163520040
 GameObject:
   m_ObjectHideFlags: 0

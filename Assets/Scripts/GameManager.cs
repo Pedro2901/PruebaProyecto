@@ -66,8 +66,9 @@ public class GameManager : Manager<GameManager>
     public void UnitDead(BaseEntity entity)
     {
         if(OnUnitDied!=null){
+             Debug.Log("Unidad muerta");
             OnUnitDied(entity);
-            Debug.Log("Unidad muerta");
+           
         }
     }
 }

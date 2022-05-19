@@ -11,13 +11,17 @@ public class MeleeEntity : BaseEntity
     //Find new target
     if(!HasEnemy)
     {
+        Debug.Log("Hola soy valentina y no tengo con quien divertirme te me unes?");
         FindTarget();
+    }else
+    {
+        Debug.Log("Hola soy valentina y ya tengo con quien divertirme");
     }
    if (!HasEnemy)
         return;
-    if(IsInRange && !moving){
+    if( !moving){
          //attack
-
+        Debug.Log("Hola soy valentina y me estoy moviendo");
         if(canAttack){
         Attack();
         Debug.Log("Ataca");

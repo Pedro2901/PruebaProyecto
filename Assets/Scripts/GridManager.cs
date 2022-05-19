@@ -92,8 +92,8 @@ public class GridManager : Manager<GridManager>
         }
     }
 
-    public int fronIndex = 0;
-    public int toIndex = 0;
+    public int fronIndex = 1;
+    public int toIndex = 50;
     private void OnDrawGizmos()
     {
         if (graph == null)
@@ -102,7 +102,7 @@ public class GridManager : Manager<GridManager>
         }
 
         var allEdges = graph.edges;
-        Debug.Log("Aristas"+allEdges);
+        Debug.Log("Aristas:--"+allEdges);
         foreach (Edge e in allEdges)
         {
             Debug.DrawLine(e.from.WorldPosition, e.to.WorldPosition, Color.black, 1);
@@ -119,13 +119,18 @@ public class GridManager : Manager<GridManager>
             return;
 
         List<Node> path = graph.GetPath(allNodes[fronIndex], allNodes[toIndex]);
-        Debug.Log(path.Count);
+        Debug.Log("path.count:"+path.Count);
         if (path.Count > 1)
         {
-            for (int i = 0; i < path.Count; i++)
+            for (int i   = 1; i < path.Count; i++)
             {
-                Debug.DrawLine(path[i - 1].WorldPosition, path[i].WorldPosition, Color.red, 10);
-                Debug.Log(path[i].WorldPosition);
+                Debug.Log("Ey si entre puto");
+                //Osea, entra al if pero no entra al for , esa monda no me cuadra
+                
+                    Debug.DrawLine(path[i -1].WorldPosition, path[i].WorldPosition, Color.red, 10);    
+                
+                
+                Debug.Log("dentro del for"+path[i].WorldPosition);
             }
         }
 

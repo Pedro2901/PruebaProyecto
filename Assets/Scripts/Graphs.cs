@@ -51,6 +51,7 @@ public bool Adjacent(Node from, Node to)
         {
             if (e.from == from && e.to == to)
                 return e.GetWeight();
+              
         }
 
         return Mathf.Infinity;
@@ -97,6 +98,7 @@ while(openList.Count>0){
     }}
 
 }
+Debug.Log("retorno path");
 return path;
 }
 
