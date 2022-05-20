@@ -4,37 +4,25 @@ using UnityEngine;
 
 public class MeleeEntity : BaseEntity
 {
-
-    
     public void Update()
-{
-    //Find new target
-    if(!HasEnemy)
     {
-        Debug.Log("Hola soy valentina y no tengo con quien divertirme te me unes?");
-        FindTarget();
-    }else
-    {
-        Debug.Log("Hola soy valentina y ya tengo con quien divertirme");
-    }
-   if (!HasEnemy)
-        return;
-    if( !moving){
-         //attack
-        Debug.Log("Hola soy valentina y me estoy moviendo");
-        if(canAttack){
-        Attack();
-        Debug.Log("Ataca");
+        if (!HasEnemy)
+        {
+            FindTarget();
         }
-        
-    }else{
-        GetInRange();
-    }
-}
 
-    protected override void Attack()
-    {
-        base.Attack();
-        currentTarget.TakeDamage(baseDamage);
+        if (IsInRange && !moving)
+        {
+            //In range for attack!
+            if (canAttack)
+            {
+                Attack();
+                currentTarget.TakeDamage(baseDamage);
+            }
+        }
+        else
+        {
+            GetInRange();
+        }
     }
 }
